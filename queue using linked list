@@ -1,0 +1,46 @@
+class node:
+
+    def __init__(self,data):
+        self.data = data
+        self.next  = None
+class Queue:
+    def __init__(self):
+        self.head = None
+        self.tail = None
+
+    def is_empty(self):
+        return self.head == None
+    def enqueue(self,data):
+        new_node = node(data)
+        if self.tail is None:
+            self.head = self.tail = new_node
+            return
+        else:
+
+            self.tail.next = new_node
+        self.tail = new_node
+    def dequeue(self):
+        if self.head is None:
+            print("empty queue")
+            return
+        popped = self.head.data
+        self.head = self.head.next
+        return popped
+    def return_first(self):
+        if self.head is None:
+            print("no start underflow ")
+        return self.head.data
+    def print_queue(self):
+        temp = self.head
+        while temp.next:
+            print(temp.data)
+            temp = temp.next
+
+
+l = Queue()
+l.enqueue("a")
+l.enqueue("b")
+l.enqueue("c")
+l.enqueue("d")
+l.enqueue("e")
+l.print_queue()
